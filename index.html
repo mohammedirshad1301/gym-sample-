@@ -1,0 +1,449 @@
+import React, { useState, useMemo } from 'react';
+import { Check, Star, Sparkles, HelpCircle, Dumbbell, Flame, Plus, MessageSquare } from 'lucide-react';
+import { PLANS, GYM_CONTACT } from '../data';
+
+export default function MembershipPlans() {
+  // Calculator states
+  const [selectedPlanId, setSelectedPlanId] = useState<string>('black-card');
+  const [billingCycle, setBillingCycle] = useState<'month' | 'quarter' | 'year'>('quarter');
+  const [includePT, setIncludePT] = useState(false);
+  const [includeSteam, setIncludeSteam] = useState(true);
+  const [includeDiet, setIncludeDiet] = useState(false);
+  const [isStudentToggle, setIsStudentToggle] = useState(true); // Default to true to highlight the user requested student discount!
+
+  const activePlan = useMemo(() => {
+    return PLANS.find((p) => p.id === selectedPlanId) || PLANS[1];
+  }, [selectedPlanId]);
+
+  // Dynamic calculations
+  const prices = useMemo(() => {
+    // 1. Base Plan rate configuration
+    let basePrice = activePlan.basePrice;
+
+    // Adapt billing frequency from plan Defaults
+    // If selected frequency differs from plan default, we scale appropriately with incentives:
+    // starter base is monthly (1500). If quarter: x3 * 0.9. If year: x12 * 0.75
+    // black-card base is quarterly (3200). If month: /3 * 1.15. If year: x4 * 0.75
+    // annual base is annual (9999). If month: /12 * 1.35. If quarter: /4 * 1.15
+    let calculatedBase = basePrice;
+    
+    if (activePlan.id === 'starter') {
+      if (billingCycle === 'quarter') {
+        calculatedBase = basePrice * 3 * 0.9; // 10% off
+      } else if (billingCycle === 'year') {
+        calculatedBase = basePrice * 12 * 0.75; // 25% off
+      }
+    } else if (activePlan.id === 'black-card') {
+      if (billingCycle === 'month') {
+        calculatedBase = Math.round((basePrice / 3) * 1.15); // 15% Premium on single month
+      } else if (billingCycle === 'year') {
+        calculatedBase = basePrice * 4 * 0.75; // 25% off for annual continuous
+      }
+    } else if (activePlan.id === 'annual-alpha') {
+      if (billingCycle === 'month') {
+        calculatedBase = Math.round((basePrice / 12) * 1.4);
+      } else if (billingCycle === 'quarter') {
+        calculatedBase = Math.round((basePrice / 4) * 1.15);
+      }
+    }
+
+    // Round base rate
+    calculatedBase = Math.round(calculatedBase);
+
+    // 2. Addons cost (scaled by billing frequency)
+    let cycleScale = billingCycle === 'month' ? 1 : billingCycle === 'quarter' ? 3 : 12;
+
+    const ptRate = includePT ? 1500 * cycleScale : 0;
+    const steamRate = includeSteam ? 500 * cycleScale : 0;
+    const dietRate = includeDiet ? 300 * cycleScale : 0;
+    const addonsTotal = ptRate + steamRate + dietRate;
+
+    // 3. Subtotal before Student Discount
+    const subtotal = calculatedBase + addonsTotal;
+
+    // 4. Student Discount (50% Off!)
+    const studentDiscountAmount = isStudentToggle ? Math.round(subtotal * 0.5) : 0;
+    const finalPrice = subtotal - studentDiscountAmount;
+
+    return {
+      base: calculatedBase,
+      addons: addonsTotal,
+      subtotal,
+      studentDiscount: studentDiscountAmount,
+      final: finalPrice
+    };
+  }, [activePlan, billingCycle, includePT, includeSteam, includeDiet, isStudentToggle]);
+
+  // Standard frequency tags
+  const cycleLabels = {
+    month: 'Monthly Cycle',
+    quarter: 'Quarterly Save Combo',
+    year: 'Annual Ultimate Pass',
+  };
+
+  // Build the message to send via WhatsApp
+  const whatsappBookingMessage = useMemo(() => {
+    let cycleText = billingCycle === 'month' ? 'Monthly' : billingCycle === 'quarter' ? 'Quarterly' : 'Annual';
+    let label = `Hi Site Cart Gym, I want to book the "${activePlan.name}" on a ${cycleText} membership.`;
+    
+    let addonsStr: string[] = [];
+    if (includePT) addonsStr.push('Personal Training Guidance');
+    if (includeSteam) addonsStr.push('Premium Steam Facility');
+    if (includeDiet) addonsStr.push('Macronutrient Blueprint');
+    
+    if (addonsStr.length > 0) {
+      label += ` With additional features: [${addonsStr.join(', ')}].`;
+    }
+
+    if (isStudentToggle) {
+      label += ` I want to claim the Student Discount rate (SCSTU50OFF) containing Flat 50% Off.`;
+    }
+
+    label += ` Calculated Total Quote: ₹${prices.final}/-. Please coordinate my slot.`;
+    return label;
+  }, [activePlan, billingCycle, includePT, includeSteam, includeDiet, isStudentToggle, prices]);
+
+  return (
+    <section id="plans" className="py-24 bg-[#09090b] relative">
+      
+      {/* Background Accent Sphere */}
+      <div className="absolute top-[30%] right-0 w-[500px] h-[500px] bg-red-600/5 rounded-full blur-[150px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-red-950/30 border border-red-900/40 rounded-full text-red-500 text-xs font-mono tracking-widest uppercase">
+            🏷️ TRANSPARENT UNCOMPLICATED BILLING
+          </div>
+          <h2 className="font-display text-3xl sm:text-5xl font-black text-white leading-tight">
+            SELECT TIER & <span className="text-red-500">CUSTOMIZE</span>
+          </h2>
+          <p className="text-zinc-400 text-base">
+            No hidden maintenance fees or surprise charges. Select your membership tier, toggle add-on modules, and see student discount deductions compute instantly.
+          </p>
+        </div>
+
+        {/* 3 Tiers Presentation Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-16" id="plans-card-grid">
+          {PLANS.map((plan) => {
+            const isSelected = selectedPlanId === plan.id;
+
+            return (
+              <div
+                key={plan.id}
+                onClick={() => {
+                  setSelectedPlanId(plan.id);
+                  // Setup sensible default billing for cohesive visual feel
+                  setBillingCycle(plan.period);
+                }}
+                className={`p-6 sm:p-8 bg-zinc-950 rounded-2xl border transition-all duration-300 flex flex-col justify-between cursor-pointer hover:border-zinc-700 hover:-translate-y-1 ${
+                  isSelected
+                    ? 'border-red-600 ring-2 ring-red-600/30 shadow-[0_0_40px_rgba(220,38,38,0.15)] bg-gradient-to-b from-[#09090b] to-red-950/10'
+                    : 'border-zinc-850'
+                }`}
+                id={`plan-card-${plan.id}`}
+              >
+                
+                {/* Popular Badge */}
+                <div className="flex justify-between items-start mb-4">
+                  {plan.popular ? (
+                    <span className="bg-red-600 text-white font-mono text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest flex items-center gap-1">
+                      <Sparkles className="w-3 h-3 fill-white" />
+                      SIGNATURE BESTSELLER
+                    </span>
+                  ) : (
+                    <span className="text-zinc-500 text-[10px] font-mono tracking-wider">Site Cart Gym</span>
+                  )}
+                  
+                  {/* Custom Check Bullet */}
+                  <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-colors ${
+                    isSelected ? 'bg-red-600 border-red-500 text-white' : 'border-zinc-800 text-transparent'
+                  }`}>
+                    <Check className="w-3.5 h-3.5" />
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="font-display text-xl sm:text-2xl font-black text-white">{plan.name}</h3>
+                  <p className="text-zinc-400 text-xs leading-relaxed">{plan.description}</p>
+                  
+                  {/* Static Baseline Unit */}
+                  <div className="pt-2">
+                    <span className="text-zinc-500 text-[10px] uppercase font-mono block">Baseline Rate</span>
+                    <span className="text-3xl font-black text-white font-mono">
+                      ₹{plan.basePrice}
+                      <span className="text-xs font-normal text-zinc-400">/{plan.period === 'month' ? 'MO' : plan.period === 'quarter' ? '3MOS' : 'YEAR'}</span>
+                    </span>
+                  </div>
+                </div>
+
+                {/* Features Checklist */}
+                <ul className="space-y-3 pt-6 mt-6 border-t border-zinc-900 flex-1">
+                  {plan.features.map((feat) => (
+                    <li key={feat} className="flex items-start gap-2 text-zinc-300 text-xs">
+                      <Check className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedPlanId(plan.id);
+                    setBillingCycle(plan.period);
+                  }}
+                  className={`w-full py-3.5 mt-8 rounded-xl font-display text-xs font-black uppercase tracking-widest transition-all duration-200 ${
+                    isSelected
+                      ? 'bg-red-600 hover:bg-red-700 text-white shadow-[0_0_15px_rgba(220,38,38,0.3)]'
+                      : 'bg-zinc-900 hover:bg-zinc-850 hover:text-white text-zinc-400'
+                  }`}
+                >
+                  {isSelected ? '★ Plan Selected' : 'Configure Plan'}
+                </button>
+
+              </div>
+            );
+          })}
+        </div>
+
+
+        {/* Interactive Calculator Dashboard */}
+        <div className="bg-zinc-900/60 border border-zinc-850 rounded-3xl p-6 sm:p-10" id="plans-dashboard-calculator">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            {/* Control Panel (7 Cols) */}
+            <div className="lg:col-span-7 space-y-6">
+              
+              <div className="flex items-center gap-2">
+                <Dumbbell className="w-5 h-5 text-red-500" />
+                <h3 className="font-display text-lg sm:text-xl font-black text-white uppercase tracking-wider">
+                  Interactive Rate Customizer
+                </h3>
+              </div>
+              
+              <p className="text-zinc-400 text-xs -mt-2">
+                Customize your program parameters. Toggle frequency bonuses, certified trainers and student concessions to compute actual pricing in real time!
+              </p>
+
+              {/* 1. Frequency Selector */}
+              <div className="space-y-2">
+                <label className="text-zinc-500 font-mono text-[10px] uppercase tracking-wider block">
+                  Step 1: Choose Billing Frequency
+                </label>
+                <div className="grid grid-cols-3 gap-2 p-1 bg-zinc-950 border border-zinc-850 rounded-xl" id="billing-cycle-btns">
+                  {(['month', 'quarter', 'year'] as const).map((cycle) => (
+                    <button
+                      key={cycle}
+                      onClick={() => setBillingCycle(cycle)}
+                      className={`py-2 rounded-lg font-display text-xs font-bold uppercase transition-all duration-200 ${
+                        billingCycle === cycle
+                          ? 'bg-red-600 text-white shadow-md'
+                          : 'text-zinc-400 hover:text-zinc-200'
+                      }`}
+                    >
+                      {cycle === 'month' ? 'Monthly' : cycle === 'quarter' ? 'Quarterly' : 'Annual'}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* 2. Addon Switches */}
+              <div className="space-y-2">
+                <label className="text-zinc-500 font-mono text-[10px] uppercase tracking-wider block">
+                  Step 2: Add Elite Training Upgrades
+                </label>
+                <div className="space-y-2.5">
+                  
+                  {/* PT Upgrade */}
+                  <div
+                    onClick={() => setIncludePT(!includePT)}
+                    className={`flex items-center justify-between p-3.5 rounded-xl border cursor-pointer transition-colors ${
+                      includePT ? 'bg-zinc-950 border-red-500/50' : 'bg-transparent border-zinc-900 hover:border-zinc-800'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className={`w-5 h-5 rounded-md border flex items-center justify-center transition-all ${
+                        includePT ? 'bg-red-600 border-red-500 text-white' : 'border-zinc-800 bg-zinc-900'
+                      }`}>
+                        {includePT && <Check className="w-3 h-3" />}
+                      </div>
+                      <div>
+                        <span className="text-xs font-bold text-white block">Personal Titan Coaching Guide</span>
+                        <span className="text-[10px] text-zinc-500">1-on-1 biomechanics with Coach Rocky</span>
+                      </div>
+                    </div>
+                    <span className="text-xs font-mono font-bold text-zinc-300">+₹1,500 <span className="text-[10px] text-zinc-500">/mo</span></span>
+                  </div>
+
+                  {/* Steam Upgrade */}
+                  <div
+                    onClick={() => setIncludeSteam(!includeSteam)}
+                    className={`flex items-center justify-between p-3.5 rounded-xl border cursor-pointer transition-colors ${
+                      includeSteam ? 'bg-zinc-950 border-red-500/50' : 'bg-transparent border-zinc-900 hover:border-zinc-800'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className={`w-5 h-5 rounded-md border flex items-center justify-center transition-all ${
+                        includeSteam ? 'bg-red-600 border-red-500 text-white' : 'border-zinc-800 bg-zinc-900'
+                      }`}>
+                        {includeSteam && <Check className="w-3 h-3" />}
+                      </div>
+                      <div>
+                        <span className="text-xs font-bold text-white block">Unlimited Hot Steam & Recovery Sauna</span>
+                        <span className="text-[10px] text-zinc-500">Daily thermotherapeutic treatment standard</span>
+                      </div>
+                    </div>
+                    <span className="text-xs font-mono font-bold text-zinc-300">+₹500 <span className="text-[10px] text-zinc-500">/mo</span></span>
+                  </div>
+
+                  {/* Nutrition Upgrade */}
+                  <div
+                    onClick={() => setIncludeDiet(!includeDiet)}
+                    className={`flex items-center justify-between p-3.5 rounded-xl border cursor-pointer transition-colors ${
+                      includeDiet ? 'bg-zinc-950 border-red-500/50' : 'bg-transparent border-zinc-900 hover:border-zinc-800'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className={`w-5 h-5 rounded-md border flex items-center justify-center transition-all ${
+                        includeDiet ? 'bg-red-600 border-red-500 text-white' : 'border-zinc-800 bg-zinc-900'
+                      }`}>
+                        {includeDiet && <Check className="w-3 h-3" />}
+                      </div>
+                      <div>
+                        <span className="text-xs font-bold text-white block">Customized Macronutrient Audits</span>
+                        <span className="text-[10px] text-zinc-500">Strategic caloric restructuring profiles</span>
+                      </div>
+                    </div>
+                    <span className="text-xs font-mono font-bold text-zinc-300">+₹300 <span className="text-[10px] text-zinc-500">/mo</span></span>
+                  </div>
+
+                </div>
+              </div>
+
+              {/* 3. Student Discount Toggle Option */}
+              <div className="space-y-2 pt-2" id="student-discount">
+                <label className="text-zinc-500 font-mono text-[10px] uppercase tracking-wider block">
+                  Step 3: Student Verification
+                </label>
+                <div
+                  onClick={() => setIsStudentToggle(!isStudentToggle)}
+                  className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 flex items-center justify-between ${
+                    isStudentToggle
+                      ? 'bg-red-950/40 border-red-600 shadow-[0_0_20px_rgba(220,38,38,0.15)]'
+                      : 'bg-zinc-950 border-zinc-800 hover:border-zinc-700'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
+                      isStudentToggle ? 'bg-red-600 border-red-500 text-white' : 'border-zinc-700 bg-zinc-900'
+                    }`}>
+                      {isStudentToggle && <Check className="w-4 h-4" />}
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-black text-white">I Am A College/School Student</span>
+                        <span className="bg-red-600 text-white font-mono text-[8.5px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">
+                          50% Off Guaranteed
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-zinc-400 mt-0.5 leading-relaxed">
+                        I pledge to present valid institutional identification cards during my first physical onboarding process.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Display Calculator Receipt (5 Cols) */}
+            <div className="lg:col-span-5" id="calculator-final-receipt">
+              <div className="bg-zinc-950 border border-zinc-800 rounded-2xl p-6 sm:p-8 space-y-5 relative">
+                
+                {/* Brand water mark */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-3 pointer-events-none text-zinc-600">
+                  <Flame className="w-56 h-56" />
+                </div>
+
+                <div className="border-b border-zinc-900 pb-4">
+                  <span className="text-xs uppercase font-mono tracking-widest text-zinc-500 block">Selected Tier Membership</span>
+                  <h4 className="font-display text-xl font-bold text-white block mt-1">{activePlan.name}</h4>
+                  <span className="text-xs font-mono text-zinc-400 font-medium tracking-wider block bg-zinc-900 border border-zinc-800/60 px-3 py-1 rounded mt-2 text-center">
+                    Frequency: {cycleLabels[billingCycle]}
+                  </span>
+                </div>
+
+                {/* Sub Total Lines */}
+                <div className="space-y-2.5 text-xs text-zinc-400 font-medium">
+                  <div className="flex justify-between">
+                    <span>Base Tier Duration Rate</span>
+                    <span className="font-mono text-white">₹{prices.base}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Selected Upgrade Features</span>
+                    <span className="font-mono text-white">₹{prices.addons}</span>
+                  </div>
+                  
+                  {isStudentToggle && (
+                    <div className="flex justify-between text-zinc-300">
+                      <span>Subtotal Draft</span>
+                      <span className="font-mono">₹{prices.subtotal}</span>
+                    </div>
+                  )}
+
+                  {isStudentToggle && (
+                    <div className="flex justify-between text-red-500 font-bold border-t border-dashed border-zinc-900 pt-2.5">
+                      <span className="flex items-center gap-1">🎉 Academic Concession (50% Off)</span>
+                      <span className="font-mono">-₹{prices.studentDiscount}</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Total Line */}
+                <div className="pt-4 border-t border-zinc-900 flex justify-between items-end">
+                  <div>
+                    <span className="text-xs font-bold text-red-500 uppercase block font-mono">Actual Amount Due</span>
+                    <p className="text-[10px] text-zinc-500 font-mono font-semibold uppercase">(Inclusive of all tax & steam rooms)</p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-3xl sm:text-4xl font-black text-white font-mono">
+                      ₹{prices.final}
+                    </span>
+                    <span className="text-[10px] text-zinc-500 font-mono block">
+                      /{billingCycle === 'month' ? 'month' : billingCycle === 'quarter' ? 'quarter' : 'year'}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Checkout CTA */}
+                <div className="pt-3">
+                  <a
+                    href={GYM_CONTACT.whatsappUrl(whatsappBookingMessage)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-4 bg-green-600 hover:bg-green-700 text-white font-display text-xs font-extrabold text-center rounded-xl uppercase tracking-widest transition-all duration-300 hover:shadow-[0_0_25px_rgba(37,162,74,0.3)] flex items-center justify-center gap-2"
+                    id="calculator-whatsapp-checkout"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    Book on WhatsApp Now
+                  </a>
+                  
+                  <p className="text-[10px] text-zinc-500 text-center mt-2.5 font-mono">
+                    ⚠️ Validated directly connected with 8124254419
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  );
+}

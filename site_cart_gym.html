@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-[#09090b]">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Cart - Premium Gym Pattabiram</title>
+  
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    ::selection {
+      background-color: #ef4444;
+      color: #ffffff;
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #09090b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1f2937;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ef4444;
+    }
+  </style>
+</head>
+<body class="text-white font-sans antialiased min-h-screen bg-[#09090b]">
+
+  <!-- STICKY NAVIGATION BAR -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#09090b]/90 backdrop-blur-md border-b border-zinc-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="#welcome" class="flex items-center gap-2 group">
+          <div class="bg-red-600 p-2 rounded-lg text-white font-bold transform group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(220,38,38,0.5)]">
+            <i data-lucide="dumbbell" class="w-6 h-6 animate-pulse"></i>
+          </div>
+          <div>
+            <span class="font-display text-2xl font-black tracking-wider text-white">
+              SITE <span class="text-red-500">CART</span>
+            </span>
+            <p class="text-[9px] font-mono tracking-widest text-zinc-400 -mt-1 uppercase">Pattabiram Elite Hub</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="#services" class="text-zinc-300 hover:text-red-500 font-medium text-sm tracking-wide transition-colors duration-200 uppercase relative py-1">Services</a>
+          <a href="#trainers" class="text-zinc-300 hover:text-red-500 font-medium text-sm tracking-wide transition-colors duration-200 uppercase relative py-1">Trainer Showcase</a>
+          <a href="#plans" class="text-zinc-300 hover:text-red-500 font-medium text-sm tracking-wide transition-colors duration-200 uppercase relative py-1">Membership Plans</a>
+          <a href="#student-discount" class="text-zinc-300 hover:text-red-500 font-medium text-sm tracking-wide transition-colors duration-200 uppercase relative py-1">Student Offer</a>
+          <a href="#reviews" class="text-zinc-300 hover:text-red-500 font-medium text-sm tracking-wide transition-colors duration-200 uppercase relative py-1">Reviews</a>
+          <a href="#location" class="text-zinc-300 hover:text-red-500 font-medium text-sm tracking-wide transition-colors duration-200 uppercase relative py-1">Location</a>
+        </div>
+
+        <!-- Contact Actions -->
+        <div class="hidden md:flex items-center gap-4">
+          <!-- Rating Indicator -->
+          <div class="flex items-center gap-2 bg-zinc-900 border border-zinc-800 px-3 py-1.5 rounded-full">
+            <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+            <span class="font-mono text-xs font-bold text-white">4.9/5.0</span>
+            <span class="text-[10px] text-zinc-400 border-l border-zinc-800/80 pl-2">Elite Rating</span>
+          </div>
+
+          <!-- Quick Contact Line -->
+          <a href="tel:8124254419" class="text-zinc-300 hover:text-red-500 text-sm font-semibold transition-colors duration-200">
+            Call: 8124254419
+          </a>
+
+          <!-- Quick Enquiry CTA -->
+          <a
+            id="whatsapp-header-btn"
+            href="https://wa.me/918124254419?text=Hi!%20I%20want%20to%20enquire%20about%20Site%20Cart%20Gym%20memberships%20and%20student%20discounts."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider py-2 px-4 rounded-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(220,38,38,0.4)] flex items-center gap-1.5"
+          >
+            <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
+            WhatsApp Enquiry
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="lg:hidden flex items-center gap-3">
+          <a
+            href="https://wa.me/918124254419?text=Hi!%20I%20am%20looking%20for%20more%20details%20on%20Site%20Cart%2520Gym."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-red-600 text-white p-2 rounded-lg"
+          >
+            <i data-lucide="message-square" class="w-5 h-5"></i>
+          </a>
+          <button
+            onclick="toggleMobileMenu()"
+            class="text-zinc-300 hover:text-white focus:outline-none p-1 bg-zinc-900 border border-zinc-800 rounded-lg"
+          >
+            <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer" class="hidden lg:hidden bg-[#09090b] border-b border-zinc-800 px-4 pt-2 pb-6 space-y-3">
+      <a href="#services" onclick="toggleMobileMenu()" class="block text-zinc-300 hover:text-red-400 font-semibold text-base py-2 uppercase tracking-wider border-b border-zinc-900">Services</a>
+      <a href="#trainers" onclick="toggleMobileMenu()" class="block text-zinc-300 hover:text-red-400 font-semibold text-base py-2 uppercase tracking-wider border-b border-zinc-900">Trainer Showcase</a>
+      <a href="#plans" onclick="toggleMobileMenu()" class="block text-zinc-300 hover:text-red-400 font-semibold text-base py-2 uppercase tracking-wider border-b border-zinc-900">Membership Plans</a>
+      <a href="#student-discount" onclick="toggleMobileMenu()" class="block text-zinc-300 hover:text-red-400 font-semibold text-base py-2 uppercase tracking-wider border-b border-zinc-900">Student Offer</a>
+      <a href="#reviews" onclick="toggleMobileMenu()" class="block text-zinc-300 hover:text-red-400 font-semibold text-base py-2 uppercase tracking-wider border-b border-zinc-900">Reviews</a>
+      <a href="#location" onclick="toggleMobileMenu()" class="block text-zinc-300 hover:text-red-400 font-semibold text-base py-2 uppercase tracking-wider border-b border-zinc-900">Location</a>
+      <div class="pt-4 flex flex-col gap-3">
+        <div class="flex items-center justify-between text-sm py-1 border-b border-zinc-900 text-zinc-400">
+          <span>RATING</span>
+          <span class="text-white font-bold flex items-center gap-1">
+            <i data-lucide="star" class="w-4 h-4 text-amber-500 fill-amber-500"></i>
+            4.9 Stars (Elite Level)
+          </span>
+        </div>
+        <a href="tel:8124254419" class="flex justify-between text-base font-bold text-red-500 py-1">
+          <span>Call Us Direct</span>
+          <span>8124254419</span>
+        </a>
+        <a
+          href="https://wa.me/918124254419?text=Hi!%20I%20am%20messaging%20from%20the%20mobile%20site.%20I%20want%20to%20join%20Site%20Cart%20Gym."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full bg-green-600 hover:bg-green-700 text-white font-bold text-center py-3 rounded-lg text-sm uppercase tracking-widest transition-transform duration-200"
+        >
+          ⚡ Message via WhatsApp
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION WITH CINEMATIC GYM BACKGROUND -->
+  <section id="welcome" class="relative min-h-screen flex items-center justify-center bg-[#09090b] pt-20 overflow-hidden">
+    
+    <!-- Cinematic Background Image -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop"
+        alt="Cinematic Dark Training Sanctuary"
+        class="w-full h-full object-cover object-center filter brightness-[0.22] saturate-125"
+      >
+      <!-- Gradient Overlays -->
+      <div class="absolute inset-0 bg-gradient-to-t from-[#09090b] via-[#09090b]/40 to-[#09090b]/90"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-[#09090b] via-transparent to-[#09090b]/80"></div>
+    </div>
+
+    <!-- Red Neon Atmospheric Lines -->
+    <div class="absolute top-1/4 left-0 right-0 h-[1.5px] bg-red-600/30 blur-[1.5px] transform -skew-y-3 pointer-events-none"></div>
+    <div class="absolute top-1/2 left-0 right-0 h-[2px] bg-red-600/20 blur-[2px] transform skew-y-6 pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left: Heading and Tag -->
+      <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-red-950/60 border border-red-500/30 rounded-full text-red-400 text-xs font-mono tracking-widest uppercase">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 fill-red-400"></i>
+          <span>PATTABIRAM'S PREMIER FITNESS SANCTUARY</span>
+        </div>
+
+        <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-none">
+          FORGE <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700 font-extrabold">RAW POWER</span> <br>
+          AT SITE CART
+        </h1>
+
+        <p class="text-zinc-300 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
+          Unlock maximum athletic capacity with high-octane squat racks, customized cardiovascular lines, steam therapy rooms, and personal training. Complete elite fitness in Pattabiram.
+        </p>
+
+        <!-- Perks grid -->
+        <div class="grid grid-cols-2 gap-4 max-w-md mx-auto lg:mx-0 text-left pt-2 font-display">
+          <div class="flex items-center gap-2 text-zinc-300 text-sm font-semibold">
+            <i data-lucide="check" class="w-4 h-4 text-red-500"></i> Premium Hammer strength
+          </div>
+          <div class="flex items-center gap-2 text-zinc-300 text-sm font-semibold">
+            <i data-lucide="check" class="w-4 h-4 text-red-500"></i> Steam Recovery
+          </div>
+          <div class="flex items-center gap-2 text-zinc-300 text-sm font-semibold">
+            <i data-lucide="check" class="w-4 h-4 text-red-500"></i> Certified Mentors
+          </div>
+          <div class="flex items-center gap-2 text-zinc-300 text-sm font-semibold">
+            <i data-lucide="star" class="w-4 h-4 text-red-500"></i> Over 4.9 Rating ⭐
+          </div>
+        </div>
+
+        <!-- Button Actions -->
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+          <a
+            href="https://wa.me/918124254419?text=Hi!%20I%2520am%252520booking%2520a%2520trial%2520slot%2520at%2520Site%252520Cart%2520Gym%252520Pattabiram."
+            target="_blank"
+            class="w-full sm:w-auto px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-display text-sm font-bold uppercase tracking-wider rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 shadow-[0_0_20px_rgba(220,38,38,0.5)] flex items-center justify-center gap-2"
+          >
+            <i data-lucide="message-square" class="w-4 h-4"></i>
+            WhatsApp Enquiry
+          </a>
+          <a
+            href="tel:8124254419"
+            class="w-full sm:w-auto px-8 py-4 bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-white hover:text-red-500 font-display text-sm font-bold uppercase tracking-wider rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
+          >
+            <i data-lucide="phone" class="w-4 h-4"></i>
+            Call: 8124254419
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Interactive Student Discount Showcase (Flat 50% Off) -->
+      <div class="lg:col-span-5 relative" id="student-discount">
+        <div class="absolute inset-0 bg-red-600/10 rounded-2xl blur-xl"></div>
+        <div class="relative bg-zinc-950/90 border-2 border-red-600/40 rounded-2xl p-6 sm:p-8 shadow-[0_0_50px_rgba(220,38,38,0.15)]">
+          <div class="absolute top-0 right-0 bg-gradient-to-bl from-red-600 to-red-800 text-white font-mono text-[10px] font-bold px-3 py-1.5 uppercase rounded-bl-xl tracking-widest">
+            COLLEGE OFFER
+          </div>
+
+          <div class="flex items-center gap-3 text-red-500 mb-4">
+            <i data-lucide="percent" class="w-8 h-8 p-1.5 bg-red-950 border border-red-500/30 rounded-lg"></i>
+            <span class="font-mono text-sm tracking-widest font-black uppercase">STUDENT CONCESSION</span>
+          </div>
+
+          <h3 class="font-display text-2xl sm:text-3xl font-black text-white leading-tight">
+            FLAT 50% OFF FOR STUDENTS
+          </h3>
+          <p class="text-zinc-400 text-sm mt-2 leading-relaxed">
+            Train at Site Cart at half-price! Simply present any school / college ID card relative to local Pattabiram campuses to initiate savings.
+          </p>
+
+          <div class="mt-6 bg-zinc-900/85 border border-zinc-800 rounded-xl p-4">
+            <div class="flex justify-between items-center text-[10px] font-mono text-zinc-500 mb-2">
+              <span>PROMO CODE</span>
+              <span>VERIFIED OFFER</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <input
+                type="text"
+                readonly
+                value="SCSTU50OFF"
+                id="promo-code"
+                class="bg-black border border-zinc-800 px-3 py-2 text-red-500 font-mono text-sm font-bold rounded-lg w-full tracking-widest text-center focus:outline-none"
+              >
+              <button
+                onclick="copyCouponCode()"
+                class="bg-red-600 hover:bg-red-700 text-white font-mono text-xs font-bold px-4 py-2.5 rounded-lg whitespace-nowrap transition-transform active:scale-95"
+              >
+                Copy Code
+              </button>
+            </div>
+            <p id="copy-message" class="hidden text-[10px] text-green-500 font-mono mt-2 text-center animate-pulse">
+              ✓ Promo code copied! Show on WhatsApp to redeem.
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-zinc-900 flex justify-between items-center">
+            <div>
+              <span class="text-[10px] text-zinc-500 uppercase font-mono block">Student Rate</span>
+              <span class="text-xl font-black text-white font-mono">₹750 <span class="text-xs text-zinc-500">/mo (Was ₹1500)</span></span>
+            </div>
+            <a
+              id="student-claim-whatsapp"
+              href="https://wa.me/918124254419?text=Hi!%20I%20am%20a%20student%20and%20I%20want%20to%20claim%20the%252050%25%20discount%20using%20the%20code:%20SCSTU50OFF."
+              target="_blank"
+              class="bg-zinc-900 border border-zinc-800 hover:border-red-600 px-4 py-2 text-xs font-bold rounded-lg text-zinc-300 transition-colors"
+            >
+              Claim Now →
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DETAILED SERVICES SECTION -->
+  <section id="services" class="py-24 bg-[#09090b] border-t border-zinc-900 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-red-950/30 border border-red-900/40 rounded-full text-red-500 text-xs font-mono tracking-widest uppercase">
+          ⚡ PROFESSIONAL WORKOUT SUITES
+        </div>
+        <h2 class="font-display text-3xl sm:text-5xl font-black text-white leading-tight">
+          PREMIUM <span class="text-red-500">GYM SERVICES</span>
+        </h2>
+        <p class="text-zinc-400 text-sm">
+          Everything you need to sculpt a masterpiece physique. Explore our core divisions optimized under elite monitoring.
+        </p>
+      </div>
+
+      <!-- Services Grid & Spotlight -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: Services Toggles (7 Cols) -->
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Cardio -->
+          <div
+            id="srv-cardio"
+            onclick="updateServiceSpotlight('cardio')"
+            class="service-card group p-6 bg-zinc-950 border border-red-600 rounded-xl cursor-pointer transition-all duration-300 shadow-[0_0_20px_rgba(220,38,38,0.15)] bg-gradient-to-br from-zinc-950 and to-red-950/20"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <div class="p-3 rounded-lg bg-red-600 text-white select-icon-bg">
+                <i data-lucide="zap" class="w-6 h-6"></i>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-red-500"></i>
+            </div>
+            <h3 class="font-display text-lg font-bold text-white">HIIT & Cardio Engine</h3>
+            <p class="text-zinc-400 text-xs leading-relaxed mt-2">Rowers, air bikes, and curved treadmills to ignite metabolic performance.</p>
+          </div>
+
+          <!-- Strength -->
+          <div
+            id="srv-strength"
+            onclick="updateServiceSpotlight('strength')"
+            class="service-card group p-6 bg-zinc-950 border border-zinc-800 rounded-xl cursor-pointer transition-all duration-300 hover:border-zinc-700"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <div class="p-3 rounded-lg bg-zinc-900 text-zinc-400 select-icon-bg group-hover:text-red-500">
+                <i data-lucide="dumbbell" class="w-6 h-6"></i>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-600"></i>
+            </div>
+            <h3 class="font-display text-lg font-bold text-zinc-200">Elite Strength Iron</h3>
+            <p class="text-zinc-400 text-xs leading-relaxed mt-2">Olympic plates, custom benching suites, and isolation machinery arrays.</p>
+          </div>
+
+          <!-- Crossfit -->
+          <div
+            id="srv-crossfit"
+            onclick="updateServiceSpotlight('crossfit')"
+            class="service-card group p-6 bg-zinc-950 border border-zinc-800 rounded-xl cursor-pointer transition-all duration-300 hover:border-zinc-700"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <div class="p-3 rounded-lg bg-zinc-900 text-zinc-400 select-icon-bg group-hover:text-red-500">
+                <i data-lucide="flame" class="w-6 h-6"></i>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-600"></i>
+            </div>
+            <h3 class="font-display text-lg font-bold text-zinc-200">CrossFit Playground</h3>
+            <p class="text-zinc-400 text-xs leading-relaxed mt-2">Full multi-functional calisthenics lines, kettlebells, and battle ropes.</p>
+          </div>
+
+          <!-- Recovery -->
+          <div
+            id="srv-recovery"
+            onclick="updateServiceSpotlight('recovery')"
+            class="service-card group p-6 bg-zinc-950 border border-zinc-800 rounded-xl cursor-pointer transition-all duration-300 hover:border-zinc-700"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <div class="p-3 rounded-lg bg-zinc-900 text-zinc-400 select-icon-bg group-hover:text-red-500">
+                <i data-lucide="sparkles" class="w-6 h-6"></i>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-600"></i>
+            </div>
+            <h3 class="font-display text-lg font-bold text-zinc-200">Steam Room & Cryo</h3>
+            <p class="text-zinc-400 text-xs leading-relaxed mt-2">Recover instantly using state-of-the-art steam heat therapy chambers.</p>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Detailed Spotlight (5 Cols) -->
+        <div class="lg:col-span-5">
+          <div class="bg-zinc-950 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl relative">
+            <div class="h-44 relative">
+              <img
+                id="spotlight-image"
+                src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=1000&auto=format&fit=crop"
+                alt="Cardio Suite"
+                class="w-full h-full object-cover filter brightness-[0.45]"
+              >
+              <span class="absolute top-4 left-4 bg-red-600 text-white font-mono text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                Elite Division
+              </span>
+              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent"></div>
+            </div>
+
+            <div class="p-6 space-y-4">
+              <h4 id="spotlight-title" class="font-display text-2xl font-extrabold text-white">HIIT & Cardio Engine</h4>
+              <p id="spotlight-desc" class="text-zinc-300 text-sm leading-relaxed">
+                Our active cardiovascular deck is structured around high-octane performance benchmarks. Equipped with curved motorless runners, commercial wind resistance assault bikes, and targeted rowing simulators that shred body fat while elevating peak VO2 threshold.
+              </p>
+
+              <div class="bg-zinc-900 border border-zinc-850 rounded-xl p-4 space-y-3">
+                <span class="text-[9px] font-mono tracking-widest text-zinc-500 uppercase block">METRICS AT SITE CART</span>
+                <div class="grid grid-cols-2 gap-4 text-xs">
+                  <div>
+                    <span class="text-zinc-500 text-[10px] block uppercase font-mono">Performance Spike</span>
+                    <span class="text-white font-bold text-sm">+42% VO2 Core Output</span>
+                  </div>
+                  <div>
+                    <span class="text-zinc-500 text-[10px] block uppercase font-mono">Coach Ratio</span>
+                    <span class="text-white font-bold text-sm">1:1 Supervised Sessions</span>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                id="spotlight-whatsapp-cta"
+                href="https://wa.me/918124254419?text=Hi!%20I%20want%2520to%2520join%20the%20HIIT%20%26%20Cardio%20Suite%20program%20at%2520Site%2520Cart%2520Gym."
+                target="_blank"
+                class="w-full py-3 bg-red-600 hover:bg-red-700 text-white font-bold text-center block rounded-lg uppercase tracking-wider text-xs transition-colors duration-350"
+              >
+                Join This Suite Program
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TRAINER SHOWCASE SECTION -->
+  <section id="trainers" class="py-24 bg-zinc-950 relative border-t border-zinc-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-red-950/30 border border-red-900/40 rounded-full text-red-500 text-xs font-mono tracking-widest uppercase">
+          ⚔️ DESIGNATED WORKOUT SPECIALISTS
+        </div>
+        <h2 class="font-display text-3xl sm:text-5xl font-black text-white leading-tight">
+          SITE CART <span class="text-red-500">TITAN CADRE</span>
+        </h2>
+        <p class="text-zinc-400 text-sm">
+          Push your performance past artificial physical barriers under certified coaching credentials. Meet our trainers.
+        </p>
+      </div>
+
+      <!-- Master / Detail Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Trainer Select Toggles (5 Cols) -->
+        <div class="lg:col-span-5 space-y-4">
+          <!-- Coach Rocky -->
+          <div
+            id="trainer-rocky"
+            onclick="updateTrainerSpotlight('rocky')"
+            class="trainer-btn p-5 bg-zinc-900 border border-red-600/80 rounded-2xl cursor-pointer transition-all duration-300 flex items-center gap-4 relative group"
+          >
+            <div class="absolute left-0 top-6 bottom-6 w-1 bg-red-500 rounded-r-md"></div>
+            <img
+              src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?q=80&w=200&auto=format&fit=crop"
+              alt="Coach Rocky"
+              class="w-14 h-14 rounded-xl object-cover border border-zinc-800"
+            >
+            <div class="flex-1">
+              <span class="text-[9px] font-mono text-red-500 font-extrabold uppercase">Head of Strength</span>
+              <h3 class="font-display text-base font-bold text-white group-hover:text-red-400">Vikram "Rocky" Prasanna</h3>
+              <p class="text-zinc-400 text-xs truncate max-w-[180px]">Powerlifting • Muscle Gain</p>
+            </div>
+            <button onclick="cheerTrainer('rocky', event)" class="bg-red-950/40 border border-red-900 text-red-400 text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+              ❤️ <span id="cheer-rocky">84</span>
+            </button>
+          </div>
+
+          <!-- Coach Sarah -->
+          <div
+            id="trainer-sarah"
+            onclick="updateTrainerSpotlight('sarah')"
+            class="trainer-btn p-5 bg-zinc-900/40 border border-transparent rounded-2xl cursor-pointer transition-all duration-300 hover:border-zinc-805 hover:bg-zinc-900/60 flex items-center gap-4 relative group"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?q=80&w=200&auto=format&fit=crop"
+              alt="Coach Sarah"
+              class="w-14 h-14 rounded-xl object-cover border border-zinc-800"
+            >
+            <div class="flex-1">
+              <span class="text-[9px] font-mono text-zinc-500 font-extrabold uppercase">HIIT & Performance Lead</span>
+              <h3 class="font-display text-base font-bold text-zinc-300 group-hover:text-red-400">Sarah Jennifer</h3>
+              <p class="text-zinc-400 text-xs truncate max-w-[180px]">Aerobic Intervals • Joint Rehab</p>
+            </div>
+            <button onclick="cheerTrainer('sarah', event)" class="bg-zinc-950 border border-zinc-800 text-zinc-400 text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+              ❤️ <span id="cheer-sarah">62</span>
+            </button>
+          </div>
+
+          <!-- Coach Kabir -->
+          <div
+            id="trainer-kabir"
+            onclick="updateTrainerSpotlight('kabir')"
+            class="trainer-btn p-5 bg-zinc-900/40 border border-transparent rounded-2xl cursor-pointer transition-all duration-300 hover:border-zinc-805 hover:bg-zinc-900/60 flex items-center gap-4 relative group"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop"
+              alt="Coach Kabir"
+              class="w-14 h-14 rounded-xl object-cover border border-zinc-800"
+            >
+            <div class="flex-1">
+              <span class="text-[9px] font-mono text-zinc-500 font-extrabold uppercase">Macronutrient Specialist</span>
+              <h3 class="font-display text-base font-bold text-zinc-300 group-hover:text-red-400">Kabir Dev</h3>
+              <p class="text-zinc-400 text-xs truncate max-w-[180px]">Transformation Coaching • Contest Prep</p>
+            </div>
+            <button onclick="cheerTrainer('kabir', event)" class="bg-zinc-950 border border-zinc-800 text-zinc-400 text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+              ❤️ <span id="cheer-kabir">49</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Trainer Spotlight Poster Detail Card (7 Cols) -->
+        <div class="lg:col-span-7 bg-zinc-900/60 border border-zinc-850 rounded-3xl p-6 sm:p-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            
+            <div class="space-y-4">
+              <div class="relative rounded-2xl overflow-hidden aspect-[4/5] border border-zinc-800 shadow-xl">
+                <img
+                  id="trainer-spot-img"
+                  src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?q=80&w=800&auto=format&fit=crop"
+                  alt="Spotlight Active Trainer"
+                  class="w-full h-full object-cover filter saturate-110 brightness-[0.8]"
+                >
+                <div class="absolute bottom-4 left-4 bg-zinc-950/90 px-3 py-1.5 rounded-lg text-white text-[9px] font-mono uppercase font-bold flex items-center gap-1">
+                  <i data-lucide="shield-check" class="w-3.5 h-3.5 text-red-500"></i> Active Coach
+                </div>
+              </div>
+
+              <!-- Quote block -->
+              <div class="bg-zinc-950 p-4 border border-zinc-850 rounded-xl">
+                <p id="trainer-spot-quote" class="text-zinc-300 text-xs italic">
+                  "Excuses don't build iron shoulders. You show up, you execute, or you stay the same."
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-5">
+              <div>
+                <span id="trainer-spot-role" class="text-xs font-mono text-red-500 font-extrabold uppercase">Head of Strength</span>
+                <h3 id="trainer-spot-name" class="font-display text-2xl font-black text-white mt-1">Vikram "Rocky" Prasanna</h3>
+                <p id="trainer-spot-bio" class="text-zinc-400 text-sm mt-3 leading-relaxed">
+                  Former Chennai State Powerlifting champion with over 12+ years of hardcore transformation expertise. Specializes in building raw strength with absolute biomechanical precision.
+                </p>
+              </div>
+
+              <div>
+                <span class="text-[9px] font-mono tracking-widest text-zinc-500 uppercase block mb-1.5">Specialties</span>
+                <div id="trainer-spot-specialties" class="flex flex-wrap gap-1.5">
+                  <span class="bg-zinc-950 text-zinc-300 text-[11px] px-2.5 py-1 rounded-md border border-zinc-800">🏋️ Powerlifting</span>
+                  <span class="bg-zinc-950 text-zinc-300 text-[11px] px-2.5 py-1 rounded-md border border-zinc-800">🏋️ Hypertrophy Programming</span>
+                  <span class="bg-zinc-950 text-zinc-300 text-[11px] px-2.5 py-1 rounded-md border border-zinc-800">🏋️ Olympic Lifting</span>
+                </div>
+              </div>
+
+              <div>
+                <span class="text-[9px] font-mono tracking-widest text-zinc-500 uppercase block mb-1.5">Certifications</span>
+                <ul id="trainer-spot-certs" class="space-y-1 text-xs text-zinc-400">
+                  <li class="flex items-center gap-2"><i data-lucide="award" class="w-3.5 h-3.5 text-red-500"></i> ISSA Master Trainer</li>
+                  <li class="flex items-center gap-2"><i data-lucide="award" class="w-3.5 h-3.5 text-red-500"></i> CSCS Strength Master</li>
+                </ul>
+              </div>
+
+              <a
+                id="trainer-spotlight-whatsapp"
+                href="https://wa.me/918124254419?text=Hi!%20I%20want%2520to%2520book%20a%20personal%20assessment%20slot%20with%2520Coach%2520Rocky."
+                target="_blank"
+                class="w-full bg-red-600 hover:bg-red-700 text-white font-display text-xs font-bold text-center py-3.5 rounded-xl uppercase tracking-widest block transition-colors duration-250 hover:shadow-[0_0_20px_rgba(220,38,38,0.3)]"
+              >
+                Book Personal Session
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MEMBERSHIP PLANS & INTEGRATED CALCULATOR -->
+  <section id="plans" class="py-24 bg-[#09090b] relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-red-950/30 border border-red-900/40 rounded-full text-red-500 text-xs font-mono tracking-widest uppercase">
+          🏷️ TRANSPARENT DEED PRICING
+        </div>
+        <h2 class="font-display text-3xl sm:text-5xl font-black text-white leading-tight">
+          MEMBERSHIP <span class="text-red-500">Tiers & Calculator</span>
+        </h2>
+        <p class="text-zinc-400 text-sm">
+          Select or tailor your exact gym requirements. Use our real-time selector below to lock actual quotes.
+        </p>
+      </div>
+
+      <!-- Plans Cards Representation -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-16">
+        <!-- Monthly Starter -->
+        <div
+          id="plan-starter-card"
+          onclick="selectPlan('starter', 1500, 'month')"
+          class="plan-card p-6 sm:p-8 bg-zinc-950 rounded-2xl border border-zinc-850 cursor-pointer transition-all hover:border-zinc-700"
+        >
+          <div class="flex justify-between items-start mb-4">
+            <span class="text-zinc-500 text-[10px] font-mono tracking-wider">Site Cart Gym</span>
+            <div id="plan-starter-check" class="w-5 h-5 rounded-full border border-zinc-800 text-transparent flex items-center justify-center">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i>
+            </div>
+          </div>
+          <h3 class="font-display text-xl font-bold text-white">Rookie Power</h3>
+          <p class="text-zinc-400 text-xs leading-relaxed mt-2">Perfect for beginners looking to establish consistent iron habits in their local region.</p>
+          <div class="pt-4">
+            <span class="text-zinc-500 text-[10px] uppercase font-mono block">Baseline Rate</span>
+            <span class="text-3xl font-black text-white font-mono">₹1,500 <span class="text-xs text-zinc-400">/MO</span></span>
+          </div>
+          <ul class="space-y-2 pt-6 mt-6 border-t border-zinc-900 text-xs text-zinc-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-red-500 flex-shrink-0"></i> Strength Zone Access</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-red-500 flex-shrink-0"></i> Daily Locker Facilities</li>
+            <li class="flex items-center gap-2"><i data-lucide="close" class="w-4 h-4 text-zinc-500 flex-shrink-0"></i> Standard Orientation Plan</li>
+          </ul>
+        </div>
+
+        <!-- Signature Black Card (Quarterly) -->
+        <div
+          id="plan-black-card"
+          onclick="selectPlan('black-card', 3200, 'quarter')"
+          class="plan-card p-6 sm:p-8 bg-zinc-950 rounded-2xl border-2 border-red-600 ring-2 ring-red-600/30 shadow-[0_0_40px_rgba(220,38,38,0.15)] cursor-pointer transition-all hover:border-red-500"
+        >
+          <div class="flex justify-between items-start mb-4">
+            <span class="bg-red-600 text-white font-mono text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest flex items-center gap-1">
+              ⭐ SIGNATURE COMBOPACK
+            </span>
+            <div id="plan-black-check" class="w-5 h-5 rounded-full border border-red-500 bg-red-600 text-white flex items-center justify-center">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i>
+            </div>
+          </div>
+          <h3 class="font-display text-xl font-bold text-white">Signature Black Card</h3>
+          <p class="text-zinc-400 text-xs leading-relaxed mt-2 font-medium">Our most sought-after signature workout pass. Full unrestricted elite training tier.</p>
+          <div class="pt-4">
+            <span class="text-zinc-500 text-[10px] uppercase font-mono block">Baseline Rate</span>
+            <span class="text-3xl font-black text-white font-mono">₹3,200 <span class="text-xs text-zinc-400">/3MOS</span></span>
+          </div>
+          <ul class="space-y-2 pt-6 mt-6 border-t border-zinc-900 text-xs text-zinc-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-red-500 flex-shrink-0"></i> Unrestricted Elite Session</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-red-500 flex-shrink-0"></i> 2 Personal Posture Checks</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-red-500 flex-shrink-0"></i> Hot Steam Recover Pass Included</li>
+          </ul>
+        </div>
+
+        <!-- Annual Alpha (Yearly) -->
+        <div
+          id="plan-alpha-card"
+          onclick="selectPlan('annual-alpha', 9999, 'year')"
+          class="plan-card p-6 sm:p-8 bg-zinc-950 rounded-2xl border border-zinc-850 cursor-pointer transition-all hover:border-zinc-700"
+        >
+          <div class="flex justify-between items-start mb-4">
+            <span class="text-zinc-500 text-[10px] font-mono tracking-wider">Site Cart Gym</span>
+            <div id="plan-alpha-check" class="w-5 h-5 rounded-full border border-zinc-800 text-transparent flex items-center justify-center">
+              <i data-lucide="check" class="w-3.5 h-3.5"></i>
+            </div>
+          </div>
+          <h3 class="font-display text-xl font-bold text-white">Annual Alpha Shield</h3>
+          <p class="text-zinc-400 text-xs leading-relaxed mt-2">Maximum financial scale efficiency with premium physical materials.</p>
+          <div class="pt-4">
+            <span class="text-zinc-500 text-[10px] uppercase font-mono block">Baseline Rate</span>
+            <span class="text-3xl font-black text-white font-mono">₹9,999 <span class="text-xs text-zinc-400">/YEAR</span></span>
+          </div>
+          <ul class="space-y-2 pt-6 mt-6 border-t border-zinc-900 text-xs text-zinc-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-red-500 flex-shrink-0"></i> Complete 1 Year pass</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-red-500 flex-shrink-0"></i> Shaker Gym Bag & Lift Straps</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-red-500 flex-shrink-0"></i> Unlimited Recovery Saunas</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Interactive Calculator Dashboard -->
+      <div class="bg-zinc-900/60 border border-zinc-850 rounded-3xl p-6 sm:p-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Controller Col (7 Cols) -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="flex items-center gap-2">
+              <i data-lucide="calculator" class="w-5 h-5 text-red-500"></i>
+              <h3 class="font-display text-lg sm:text-xl font-black text-white uppercase tracking-wider">
+                Interactive Plan Customizer
+              </h3>
+            </div>
+            
+            <!-- Step 1: billing frequency -->
+            <div class="space-y-2">
+              <label class="text-zinc-505 font-mono text-[10px] uppercase tracking-wider block text-zinc-500">
+                Step 1: Choose Billing Cycle
+              </label>
+              <div class="grid grid-cols-3 gap-2 p-1 bg-zinc-950 border border-zinc-850 rounded-xl">
+                <button onclick="setCycle('month')" id="btn-cycle-month" class="cycle-btn py-2 text-zinc-400 hover:text-zinc-200 rounded-lg font-display text-xs font-bold uppercase transition">Monthly</button>
+                <button onclick="setCycle('quarter')" id="btn-cycle-quarter" class="cycle-btn py-2 bg-red-600 text-white rounded-lg font-display text-xs font-bold uppercase transition">Quarterly</button>
+                <button onclick="setCycle('year')" id="btn-cycle-year" class="cycle-btn py-2 text-zinc-400 hover:text-zinc-200 rounded-lg font-display text-xs font-bold uppercase transition">Annual</button>
+              </div>
+            </div>
+
+            <!-- Step 2: Add-on selections -->
+            <div class="space-y-2">
+              <label class="text-zinc-505 font-mono text-[10px] uppercase tracking-wider block text-zinc-500">
+                Step 2: Training Upgrades
+              </label>
+              <div class="space-y-2">
+                <!-- PT -->
+                <div onclick="toggleAddon('pt')" class="flex items-center justify-between p-3.5 rounded-xl border border-zinc-900 hover:border-zinc-800 bg-transparent cursor-pointer transition select-none">
+                  <div class="flex items-center gap-3">
+                    <div id="check-pt" class="w-5 h-5 rounded border border-zinc-800 bg-zinc-900 text-transparent flex items-center justify-center">
+                      <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                    </div>
+                    <div>
+                      <span class="text-xs font-bold text-white block">1-on-1 Personal Titan Coaching Mentor</span>
+                      <span class="text-[10px] text-zinc-500">Comprehensive posture instruction and motivation</span>
+                    </div>
+                  </div>
+                  <span class="text-xs font-mono font-bold text-zinc-300">+₹1,500 <span class="text-[9px] text-zinc-500">/mo</span></span>
+                </div>
+
+                <!-- Steam -->
+                <div onclick="toggleAddon('steam')" class="flex items-center justify-between p-3.5 rounded-xl border border-red-500/50 bg-zinc-950 cursor-pointer transition select-none">
+                  <div class="flex items-center gap-3">
+                    <div id="check-steam" class="w-5 h-5 rounded border border-red-500 bg-red-600 text-white flex items-center justify-center">
+                      <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                    </div>
+                    <div>
+                      <span class="text-xs font-bold text-white block">Hot Steam Recover Pass</span>
+                      <span class="text-[10px] text-zinc-500">Daily metabolic thermotherapeutic session standard</span>
+                    </div>
+                  </div>
+                  <span class="text-xs font-mono font-bold text-zinc-300">+₹500 <span class="text-[9px] text-zinc-500">/mo</span></span>
+                </div>
+
+                <!-- Diet -->
+                <div onclick="toggleAddon('diet')" class="flex items-center justify-between p-3.5 rounded-xl border border-zinc-900 hover:border-zinc-800 bg-transparent cursor-pointer transition select-none">
+                  <div class="flex items-center gap-3">
+                    <div id="check-diet" class="w-5 h-5 rounded border border-zinc-800 bg-zinc-900 text-transparent flex items-center justify-center">
+                      <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                    </div>
+                    <div>
+                      <span class="text-xs font-bold text-white block">Macronutrient Customized Auditing</span>
+                      <span class="text-[10px] text-zinc-500">Caloric restructuring profiles for hypertrophy</span>
+                    </div>
+                  </div>
+                  <span class="text-xs font-mono font-bold text-zinc-300">+₹300 <span class="text-[9px] text-zinc-500">/mo</span></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Student verification toggle -->
+            <div class="space-y-2">
+              <label class="text-zinc-505 font-mono text-[10px] uppercase tracking-wider block text-zinc-500">
+                Step 3: Student Verification
+              </label>
+              <div onclick="toggleStudent()" class="p-4 rounded-xl border-2 border-red-600 bg-red-950/40 cursor-pointer shadow-[0_0_20px_rgba(220,38,38,0.15)] flex justify-between items-center select-none">
+                <div class="flex items-center gap-3">
+                  <div id="check-student" class="w-6 h-6 rounded-full border-2 border-red-500 bg-red-600 text-white flex items-center justify-center">
+                    <i data-lucide="check" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-sm font-black text-white">I am a Chennai campus / School student</span>
+                      <span class="bg-red-600 text-white font-mono text-[8px] font-bold px-1.5 py-0.5 rounded uppercase">50% Off Approved</span>
+                    </div>
+                    <p class="text-[11px] text-zinc-400 mt-0.5">I pledge to present valid physical ID card terms on first entry onboarding.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Checkout Invoice (5 Cols) -->
+          <div class="lg:col-span-5">
+            <div class="bg-zinc-950 border border-zinc-850 rounded-2xl p-6 sm:p-8 space-y-6 relative relative">
+              <div class="border-b border-zinc-900 pb-4">
+                <span class="text-xs uppercase font-mono tracking-widest text-zinc-500 block">Selected Tier</span>
+                <h4 id="calc-display-tier" class="font-display text-xl font-bold text-white mt-1">Signature Black Card</h4>
+                <span id="calc-display-cycle" class="text-xs font-mono text-zinc-400 block bg-zinc-900 border border-zinc-800 px-3 py-1 rounded mt-2.5 text-center">Cycle: Quarterly Save Combo</span>
+              </div>
+
+              <div class="space-y-2.5 text-xs text-zinc-400">
+                <div class="flex justify-between">
+                  <span>Base Duration Price</span>
+                  <span id="invoice-base" class="font-mono text-white">₹3200</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Selected Feature Upgrades</span>
+                  <span id="invoice-addons" class="font-mono text-white">₹1500 (3 months)</span>
+                </div>
+                <div class="flex justify-between text-zinc-300">
+                  <span>Draft Subtotal</span>
+                  <span id="invoice-draft-subtotal" class="font-mono">₹4700</span>
+                </div>
+                <div id="invoice-student-row" class="flex justify-between text-red-500 font-bold border-t border-dashed border-zinc-900 pt-2.5">
+                  <span>🎉 academic concession (50% Off)</span>
+                  <span id="invoice-student-discount" class="font-mono">-₹2350</span>
+                </div>
+              </div>
+
+              <div class="pt-4 border-t border-zinc-900 flex justify-between items-end">
+                <div>
+                  <span class="text-zinc-500 text-[10px] font-mono tracking-wider block">FINAL PRICE DUE</span>
+                </div>
+                <div class="text-right">
+                  <span id="invoice-total-money" class="text-3xl sm:text-4xl font-black text-white font-mono">₹2350</span>
+                  <span id="invoice-total-frequency" class="text-[9px] text-zinc-500 font-mono block">/quarter</span>
+                </div>
+              </div>
+
+              <a
+                id="invoice-whatsapp-link"
+                href="https://wa.me/918124254419?text=Hi%21%20I%20want%20to%20book%20membership."
+                target="_blank"
+                class="w-full py-4 bg-green-600 hover:bg-green-700 text-white font-display text-xs font-extrabold text-center block rounded-xl uppercase tracking-widest transition-all hover:shadow-[0_0_20px_rgba(34,197,94,0.3)]"
+              >
+                Checkout On WhatsApp
+              </a>
+
+              <p class="text-[9px] text-zinc-500 font-mono text-center">
+                Certified official booking directly directed to 8124254419
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REVIEWS AND TESTIMONIALS SECTION -->
+  <section id="reviews" class="py-24 bg-[#09090b] relative border-t border-zinc-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-red-950/30 border border-red-900/40 rounded-full text-red-500 text-xs font-mono tracking-widest uppercase">
+          🗣️ LOCAL FEEDBACK DIALS
+        </div>
+        <h2 class="font-display text-3xl sm:text-5xl font-black text-white leading-tight">
+          TESTIMONIALS <span class="text-red-500">(4.9 Stars Verified)</span>
+        </h2>
+        <p class="text-zinc-400 text-sm">
+          Join hundreds of active athletes building physical stature in Pattabiram Chennai. Read their verified feedback.
+        </p>
+      </div>
+
+      <!-- Rating Display Card & Add Feedback Button -->
+      <div class="bg-zinc-950 border border-zinc-850 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 mb-12 shadow-2xl">
+        <div>
+          <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">AGGREGATED SATISFACTION RATIO</span>
+          <div class="flex items-center gap-4">
+            <span class="text-5xl font-black font-display text-white">4.92</span>
+            <div>
+              <div class="flex text-amber-400">
+                <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+              </div>
+              <p class="text-zinc-400 text-xs mt-1">Based on <span class="text-white font-bold">384 members</span> inside Pattabiram Chennai region.</p>
+            </div>
+          </div>
+        </div>
+
+        <button
+          onclick="toggleFeedbackForm()"
+          class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-display text-xs font-bold uppercase tracking-wider rounded-lg transition-transform active:scale-95 flex items-center gap-2"
+        >
+          <i data-lucide="plus" class="w-4 h-4"></i> Write A Review
+        </button>
+      </div>
+
+      <!-- Feedback Append Form Drawer container -->
+      <div id="feedback-form-row" class="hidden bg-zinc-900 border border-red-600/30 rounded-2xl p-6 sm:p-8 mb-12">
+        <h3 class="font-display text-lg font-bold text-white mb-4">Append Your Training Testimonial</h3>
+        
+        <form onsubmit="addNewReview(event)" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">Your Full Name *</label>
+              <input type="text" id="fb-name" required placeholder="e.g. Anand Sharma" class="w-full bg-zinc-950 border border-zinc-800 text-white px-4 py-3 rounded-lg text-xs focus:outline-none">
+            </div>
+            <div>
+              <label class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">Your Joined Program *</label>
+              <select id="fb-plan" class="w-full bg-zinc-950 border border-zinc-800 text-white px-4 py-3 rounded-lg text-xs focus:outline-none">
+                <option value="Signature Black Card">Signature Black Card</option>
+                <option value="Rookie Power">Rookie Power (Monthly)</option>
+                <option value="Rookie Power [Student Offer]">Rookie Power [Student Offer]</option>
+                <option value="Annual Alpha Shield">Annual Alpha Shield</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">Your Rating *</label>
+            <div class="flex gap-1.5" id="rating-star-selector">
+              <button type="button" onclick="setFormStars(1)" class="star-btn"><i data-lucide="star" class="w-6 h-6 text-amber-400 fill-amber-400"></i></button>
+              <button type="button" onclick="setFormStars(2)" class="star-btn"><i data-lucide="star" class="w-6 h-6 text-amber-400 fill-amber-400"></i></button>
+              <button type="button" onclick="setFormStars(3)" class="star-btn"><i data-lucide="star" class="w-6 h-6 text-amber-400 fill-amber-400"></i></button>
+              <button type="button" onclick="setFormStars(4)" class="star-btn"><i data-lucide="star" class="w-6 h-6 text-amber-400 fill-amber-400"></i></button>
+              <button type="button" onclick="setFormStars(5)" class="star-btn"><i data-lucide="star" class="w-6 h-6 text-amber-400 fill-amber-400"></i></button>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">Tell Us Your Transformation Progress *</label>
+            <textarea id="fb-comment" required rows="3" placeholder="Explain the atmosphere, equipment density, or steam sessions..." class="w-full bg-zinc-950 border border-zinc-800 text-white px-4 py-3 rounded-lg text-xs focus:outline-none resize-none"></textarea>
+          </div>
+
+          <div class="flex justify-end gap-3 pt-2">
+            <button type="button" onclick="toggleFeedbackForm()" class="px-4 py-2 border border-zinc-800 text-zinc-400 text-[10px] font-mono uppercase bg-transparent rounded-lg">Cancel</button>
+            <button type="submit" class="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-mono text-xs font-bold uppercase rounded-lg">Append Live Review✓</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Testimonials grid list -->
+      <div id="reviews-list-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Rev 1 -->
+        <div class="bg-zinc-950 border border-zinc-900 p-5 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop" class="w-10 h-10 rounded-full object-cover">
+              <div>
+                <h4 class="font-display font-semibold text-sm text-white">Karthik Raja</h4>
+                <span class="text-[9px] text-zinc-500 font-mono block">Joined: Signature Black Card</span>
+              </div>
+            </div>
+            <div class="flex text-amber-400 mb-3"><i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i></div>
+            <p class="text-zinc-300 text-xs italic leading-relaxed">"Absolutely hands down the best gym facility in the Pattabiram area. The red and black aesthetic is incredibly motivating."</p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-zinc-900 flex justify-between text-[8px] font-mono text-zinc-500 uppercase">
+            <span class="text-red-500/80 font-bold">✓ Verified Client</span>
+            <span>3 weeks ago</span>
+          </div>
+        </div>
+
+        <!-- Rev 2 -->
+        <div class="bg-zinc-950 border border-zinc-900 p-5 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop" class="w-10 h-10 rounded-full object-cover">
+              <div>
+                <h4 class="font-display font-semibold text-sm text-white">Deepika S.</h4>
+                <span class="text-[9px] text-zinc-500 font-mono block">Joined: 50% Off Student Rate</span>
+              </div>
+            </div>
+            <div class="flex text-amber-400 mb-3"><i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i></div>
+            <p class="text-zinc-300 text-xs italic leading-relaxed">"The 50% discount for students is a lifesaver! I showed my collegiate ID card and got registered in the regular program instantly."</p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-zinc-900 flex justify-between text-[8px] font-mono text-zinc-500 uppercase">
+            <span class="text-red-500/80 font-bold">✓ Verified Student</span>
+            <span>1 month ago</span>
+          </div>
+        </div>
+
+        <!-- Rev 3 -->
+        <div class="bg-zinc-950 border border-zinc-900 p-5 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&auto=format&fit=crop" class="w-10 h-10 rounded-full object-cover">
+              <div>
+                <h4 class="font-display font-semibold text-sm text-white">Mohammed Irshad</h4>
+                <span class="text-[9px] text-zinc-500 font-mono block">Joined: Annual Alpha Shield</span>
+              </div>
+            </div>
+            <div class="flex text-amber-400 mb-3"><i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-amber-405 text-amber-400"></i></div>
+            <p class="text-zinc-300 text-xs italic leading-relaxed">"Site Cart Gym has insane equipment variety. Squat racks are always clean and customer coordination via WhatsApp is super fast!"</p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-zinc-900 flex justify-between text-[8px] font-mono text-zinc-500 uppercase">
+            <span class="text-red-500/80 font-bold">✓ Verified Client</span>
+            <span>2 months ago</span>
+          </div>
+        </div>
+
+        <!-- Rev 4 -->
+        <div class="bg-zinc-950 border border-zinc-900 p-5 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=150&auto=format&fit=crop" class="w-10 h-10 rounded-full object-cover">
+              <div>
+                <h4 class="font-display font-semibold text-sm text-white">Ravi Teja</h4>
+                <span class="text-[9px] text-zinc-500 font-mono block">Joined: Signature Black Card</span>
+              </div>
+            </div>
+            <div class="flex text-amber-400 mb-3"><i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-405"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-405"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-405"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-405"></i><i data-lucide="star" class="w-3.5 h-3.5 text-zinc-800"></i></div>
+            <p class="text-zinc-300 text-xs italic leading-relaxed">"Dynamic lighting, motivating songs, and professional machines throughout client hours. Posture guidelines from trainers are extreme."</p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-zinc-900 flex justify-between text-[8px] font-mono text-zinc-500 uppercase">
+            <span class="text-red-500/80 font-bold">✓ Verified Client</span>
+            <span>2 weeks ago</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PHYSICAL ADDRESS AND CONTACT SECTION -->
+  <section id="location" class="bg-zinc-950 pt-24 pb-12 border-t border-zinc-900 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Main Grid Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
+        
+        <!-- Left: Landmarking (6 Cols) -->
+        <div class="lg:col-span-6 space-y-8">
+          <div class="space-y-4">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-red-950/30 border border-red-900/40 rounded-full text-red-500 text-xs font-mono tracking-widest uppercase">
+              📍 PHYSICAL FLOOR LANDMARKS
+            </div>
+            <h2 class="font-display text-3xl sm:text-4xl font-black text-white">
+              COME VISIT OUR <span class="text-red-500">PATTABIRAM FACILITY</span>
+            </h2>
+            <p class="text-zinc-400 text-sm">
+              We operate in the heart of Pattabiram, extremely accessible to collegiate students coming from local colleges. Drop by for a custom orientation session.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            
+            <!-- Address structure card -->
+            <div class="flex gap-4 p-5 bg-zinc-900/60 border border-zinc-850 rounded-2xl">
+              <div class="p-3 bg-red-950 border border-red-500/30 text-red-500 rounded-xl flex-shrink-0 h-fit">
+                <i data-lucide="map-pin" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-bold text-sm">Official Physical Landmark</h4>
+                <p class="text-zinc-300 text-xs mt-1.5 leading-relaxed">
+                  Pattabiram, Chennai, Tamil Nadu - 600072 (Near Railway Station, Elite Strength Hub)
+                </p>
+                <span class="text-[10px] font-mono text-zinc-500 uppercase mt-2 block">PATTABIRAM CHENNAI</span>
+              </div>
+            </div>
+
+            <!-- Telephone details -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <a href="tel:8124254419" class="flex gap-3 p-4 bg-zinc-900/40 border border-zinc-850 rounded-xl hover:border-red-500/50 transition-colors">
+                <i data-lucide="phone" class="w-5 h-5 text-red-500"></i>
+                <div>
+                  <span class="text-zinc-500 text-[9px] uppercase font-mono block">Direct Dial line</span>
+                  <span class="text-white text-xs font-bold font-mono">8124254419</span>
+                </div>
+              </a>
+              <a href="https://wa.me/918124254419" target="_blank" class="flex gap-3 p-4 bg-zinc-900/40 border border-zinc-850 rounded-xl hover:border-green-500/50 transition-colors">
+                <i data-lucide="message-square" class="w-5 h-5 text-green-500"></i>
+                <div>
+                  <span class="text-zinc-500 text-[9px] uppercase font-mono block">WhatsApp Chat</span>
+                  <span class="text-white text-xs font-bold font-mono">8124254419 Enquiry</span>
+                </div>
+              </a>
+            </div>
+
+            <!-- Hours line -->
+            <div class="flex gap-4 p-5 bg-zinc-900/60 border border-zinc-850 rounded-2xl">
+              <div class="p-3 bg-red-950 border border-red-500/30 text-red-500 rounded-xl flex-shrink-0 h-fit">
+                <i data-lucide="clock" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-bold text-sm">Working Hours</h4>
+                <div class="grid grid-cols-2 gap-4 mt-2 text-xs text-zinc-300">
+                  <div>
+                    <span class="text-zinc-500 text-[9px] block uppercase font-mono">Monday - Saturday</span>
+                    <span>Morning: 5:00 AM - 11:30 AM</span>
+                    <span class="block">Evening: 4:00 PM - 10:00 PM</span>
+                  </div>
+                  <div>
+                    <span class="text-zinc-500 text-[9px] block uppercase font-mono">Sunday (Cardio Session)</span>
+                    <span>Morning: 6:00 AM - 11:00 AM</span>
+                    <span class="block text-red-500 font-semibold">Afternoon: Closed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: FAQ Accordion (6 Cols) -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="space-y-1">
+            <span class="text-[9px] font-mono text-red-500 uppercase font-black block">FAQs</span>
+            <h3 class="font-display text-2xl font-black text-white">Frequently Asked Answers</h3>
+          </div>
+
+          <div class="space-y-3">
+            <!-- FAQ 1 -->
+            <div onclick="toggleFaq(1)" class="p-4 bg-zinc-900 border border-zinc-850 rounded-xl cursor-pointer">
+              <div class="flex items-center justify-between text-white font-bold text-xs gap-4">
+                <span class="flex items-center gap-2"><i data-lucide="help-circle" class="w-4 h-4 text-red-500"></i> How do I claim the 50% Student Discount?</span>
+                <i data-lucide="chevron-down" id="faq-chevron-1" class="w-4 h-4 text-zinc-500 transition-transform"></i>
+              </div>
+              <p id="faq-answer-1" class="hidden text-zinc-400 text-xs mt-3 border-t border-zinc-950 pt-3">
+                Absolutely simple! Copy coupon "SCSTU50OFF" and message on WhatsApp direct. Present any school / college identification card on first enrollment onboarding to lock this 50% discount rate indefinitely.
+              </p>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div onclick="toggleFaq(2)" class="p-4 bg-zinc-900 border border-zinc-850 rounded-xl cursor-pointer">
+              <div class="flex items-center justify-between text-white font-bold text-xs gap-4">
+                <span class="flex items-center gap-2"><i data-lucide="help-circle" class="w-4 h-4 text-red-500"></i> Where are you located in Pattabiram?</span>
+                <i data-lucide="chevron-down" id="faq-chevron-2" class="w-4 h-4 text-zinc-500 transition-transform"></i>
+              </div>
+              <p id="faq-answer-2" class="hidden text-zinc-400 text-xs mt-3 border-t border-zinc-950 pt-3">
+                We are situated in Pattabiram Chennai, extremely close to the Pattabiram local railway station and public transit terminals. This premium location makes it easy to commute between college, work, and the training floor.
+              </p>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div onclick="toggleFaq(3)" class="p-4 bg-zinc-900 border border-zinc-850 rounded-xl cursor-pointer">
+              <div class="flex items-center justify-between text-white font-bold text-xs gap-4">
+                <span class="flex items-center gap-2"><i data-lucide="help-circle" class="w-4 h-4 text-red-500"></i> Are the steam baths included in all tiers?</span>
+                <i data-lucide="chevron-down" id="faq-chevron-3" class="w-4 h-4 text-zinc-500 transition-transform"></i>
+              </div>
+              <p id="faq-answer-3" class="hidden text-zinc-400 text-xs mt-3 border-t border-zinc-950 pt-3">
+                Steam bath recovery is fully included with our Signature Black Card and Annual Alpha packages without any micro-billing. For Rookie Starter plans, we offer steam chamber upgrades for ₹500/mo.
+              </p>
+            </div>
+          </div>
+
+          <!-- Mid-Notice Verification Guard -->
+          <div class="p-4 bg-zinc-950 border border-dashed border-red-500/20 rounded-xl flex items-start gap-4">
+            <i data-lucide="shield-check" class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5"></i>
+            <div>
+              <span class="text-[9px] font-mono text-zinc-400 uppercase tracking-wider block">Middleman Protection Guard</span>
+              <p class="text-zinc-500 text-[10px] mt-1 leading-normal">
+                Avoid external middleman agencies. Contact number <span class="text-white font-extrabold pb-0.5 border-b border-zinc-800">8124254419</span> is the only verified gateway to finalize training programs, authorize college ID, or process digital transactions securely.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom credits -->
+      <div class="pt-12 border-t border-zinc-900 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-zinc-500">
+        <div class="flex items-center gap-2">
+          <div class="bg-red-600 p-1.5 rounded-md text-white font-bold">
+            <i data-lucide="dumbbell" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <span class="font-display text-sm font-black tracking-wider text-white">
+              SITE <span class="text-red-500">CART</span> Fitness
+            </span>
+          </div>
+        </div>
+
+        <p class="text-center md:text-left font-mono">
+          &copy; <span id="current-year"></span> Site Cart Gym Pattabiram Chennai. All rights reserved.
+        </p>
+
+        <div class="flex items-center gap-4 text-[9px] font-mono tracking-widest uppercase">
+          <a href="#services" class="hover:text-red-500">Services</a>
+          <span>•</span>
+          <a href="#plans" class="hover:text-red-500">Plans</a>
+          <span>•</span>
+          <a href="#trainers" class="hover:text-red-500 text-red-500">Trainers</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Floating Pulse WhatsApp Button -->
+    <a
+      href="https://wa.me/918124254419?text=Hi!%20I%20want%2520to%2520book%20a%20slot%20at%2520Site%2520Cart%2520Gym%2520Pattabiram."
+      target="_blank"
+      class="fixed bottom-6 right-6 z-50 p-4 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-[0_0_25px_rgba(34,197,94,0.4)] transition-transform hover:scale-110 flex items-center justify-center border-2 border-white/20 hover:border-white/50 cursor-pointer animate-pulse"
+      title="Immediate WhatsApp Enquiry"
+    >
+      <i data-lucide="message-square" class="w-6 h-6"></i>
+    </a>
+  </section>
+
+  <!-- MASTER CLIENT-SIDE LOGIC -->
+  <script>
+    // Initialize Year
+    document.getElementById('current-year').innerText = new Date().getFullYear();
+
+    // Icon initialization
+    lucide.createIcons();
+
+    // Mobile menu drawer toggling
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      const icon = document.getElementById('menu-icon');
+      if (drawer.classList.contains('hidden')) {
+        drawer.classList.remove('hidden');
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        drawer.classList.add('hidden');
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    }
+
+    // Services Spotlight Database
+    const servicesData = {
+      cardio: {
+        title: "HIIT & Cardio Engine",
+        desc: "Our active cardiovascular deck is structured around high-octane performance benchmarks. Equipped with curved motorless runners, commercial wind resistance assault bikes, and targeted rowing simulators that shred body fat while elevating peak VO2 threshold.",
+        img: "https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=1000&auto=format&fit=crop",
+        cta: "https://wa.me/918124254419?text=Hi!%20I%20want%2520to%2520join%20the%20HIIT%20%26%20Cardio%20Suite%20program%20at%2520Site%2520Cart%2520Gym."
+      },
+      strength: {
+        title: "Elite Strength Iron",
+        desc: "Heavy-duty platforms designed for compound progress. Equipped with calibrated Olympic plates, premium dumbbells scaling up to 60kg, specialized structural cages, and original Hammer Strength isolative machinery tracks supporting anatomical precision and raw density.",
+        img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop",
+        cta: "https://wa.me/918124254419?text=Hi!%20I%20want%2520to%20join%20the%20Elite%20Strength%20Iron%20program%20at%2520Site%2520Cart%2520Gym."
+      },
+      crossfit: {
+        title: "CrossFit Playground",
+        desc: "Build real functional threshold capacity. Our dedicated tactical arena features industrial steel calisthenics rigs, slam balls, high-agilometer climbing systems, plyometric steps, and heavy execution ropes that shape natural kinetic performance.",
+        img: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1000&auto=format&fit=crop",
+        cta: "https://wa.me/918124254419?text=Hi!%20I%20want%2520to%20join%20the%20CrossFit%20Playground%20program%20at%2520Site%2520Cart%2520Gym."
+      },
+      recovery: {
+        title: "Steam Room & Cryo Therapy",
+        desc: "Excellent physique construction demands calculated therapeutic restoration. Reinvigorate vascular circulation, speed recovery phases, and wash out lactic deposits with our commercial hot steam recovery chambers and rapid ice hydration options.",
+        img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1000&auto=format&fit=crop",
+        cta: "https://wa.me/918124254419?text=Hi!%20I%20want%2520to%20join%20the%20Steam%20and%20Cryo%20Recovery%20program%20at%2520Site%2520Cart%2520Gym."
+      }
+    };
+
+    function updateServiceSpotlight(key) {
+      // Toggle card visuals
+      const cards = document.querySelectorAll('.service-card');
+      cards.forEach(c => {
+        c.classList.remove('border-red-600', 'shadow-[0_0_25px_rgba(220,38,38,0.2)]', 'bg-gradient-to-br', 'from-zinc-950', 'to-red-950/20');
+        c.classList.add('border-zinc-800');
+        c.querySelector('.select-icon-bg').classList.remove('bg-red-600', 'text-white');
+        c.querySelector('.select-icon-bg').classList.add('bg-zinc-900', 'text-zinc-400');
+      });
+
+      const activeCard = document.getElementById('srv-' + key);
+      activeCard.classList.remove('border-zinc-800');
+      activeCard.classList.add('border-red-600', 'shadow-[0_0_25px_rgba(220,38,38,0.2)]', 'bg-gradient-to-br', 'from-zinc-950', 'to-red-950/20');
+      activeCard.querySelector('.select-icon-bg').classList.remove('bg-zinc-900', 'text-zinc-400');
+      activeCard.querySelector('.select-icon-bg').classList.add('bg-red-600', 'text-white');
+
+      // Update Spotlight Data
+      const sData = servicesData[key];
+      document.getElementById('spotlight-title').innerText = sData.title;
+      document.getElementById('spotlight-desc').innerText = sData.desc;
+      document.getElementById('spotlight-image').src = sData.img;
+      document.getElementById('spotlight-whatsapp-cta').href = sData.cta;
+    }
+
+    // Trainer Spotlight Database
+    const trainersData = {
+      rocky: {
+        name: "Vikram \"Rocky\" Prasanna",
+         role: "Head Of Strength & Condition",
+        bio: "Former Chennai State Powerlifting champion with over 12+ years of hardcore transformation expertise. Specializes in building raw strength with absolute biomechanical precision.",
+        quote: "Excuses don't build iron shoulders. You show up, you execute, or you stay the same.",
+        img: "https://images.unsplash.com/photo-1567013127542-490d757e51fc?q=80&w=800&auto=format&fit=crop",
+        specialties: ["🏋️ Powerlifting", "🏋️ Hypertrophy Programming", "🏋️ Olympic Lifting"],
+        certs: ["CSCS Strength Master Specialist", "ISSA Advanced Certified Trainer"],
+        ctaText: "Book Session With Coach Rocky",
+        ctaUrl: "https://wa.me/918124254419?text=Hi!%20I%20want%2520to%2520book%20a%20personal%20assessment%20slot%20with%2520Coach%2520Rocky."
+      },
+      sarah: {
+        name: "Sarah Jennifer",
+        role: "Lead HIIT & Performance Coach",
+        bio: "Former National track and field athlete. Sarah coordinates optimal athletic pacing, high cardiovascular metrics, and advanced joint stabilization regimes supporting sustained weight loss.",
+        quote: "Your physical limits are simply warnings that your mind has already finalized.",
+        img: "https://images.unsplash.com/photo-1548690312-e3b507d8c110?q=80&w=800&auto=format&fit=crop",
+        specialties: ["🏃 Metabolic Circuits", "🏃 Joint Rehabilitation", "🏃 Athletic Agility"],
+        certs: ["NASM Corrective Exercise Specialist", "ACE Advanced Coaching Cert"],
+        ctaText: "Book Session With Coach Sarah",
+        ctaUrl: "https://wa.me/918124254419?text=Hi!%20I%20want%2520to%252520book%2520agilometers%2520assessment%2520with%252520Coach%2520Sarah."
+      },
+      kabir: {
+        name: "Kabir Dev",
+        role: "Transformation Specialist",
+        bio: "Master of structuralcontest prep, macronutrient redesign, and daily caloric metrics. Kabir has spearheaded over 550+ elite body transformation profiles scaling muscle density.",
+        quote: "Nutrition isn't starvation; it is the calculated performance fuel that sculpts muscle into stone.",
+        img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+        specialties: ["🥗 Contest Prep / Bodybuilding", "🥗 Meal Preparation Design", "🥗 Caloric Micro Audits"],
+        certs: ["Precision Nutrition Level 2 Coach", "IFBB Certified Macro Consultant"],
+        ctaText: "Book Session With Coach Kabir",
+        ctaUrl: "https://wa.me/918124254419?text=Hi!%20I%20want%2520to%2520book%20a%20dietary%20transformation%2520blueprint%2520with%2520Coach%2520Kabir."
+      }
+    };
+
+    function updateTrainerSpotlight(key) {
+      // Toggle card visuals
+      const btns = document.querySelectorAll('.trainer-btn');
+      btns.forEach(b => {
+        b.classList.remove('bg-zinc-900', 'border-red-600/80', 'shadow-[0_0_20px_rgba(220,38,38,0.15)]');
+        b.classList.add('bg-zinc-900/40', 'border-transparent');
+        // Delete select indicator line if exists
+        const indicator = b.querySelector('.absolute');
+        if (indicator) indicator.remove();
+      });
+
+      const activeBtn = document.getElementById('trainer-' + key);
+      activeBtn.classList.add('bg-zinc-900', 'border-red-600/80', 'shadow-[0_0_20px_rgba(220,38,38,0.15)]');
+      activeBtn.classList.remove('bg-zinc-900/40', 'border-transparent');
+      
+      // Inject selector line
+      const line = document.createElement('div');
+      line.className = "absolute left-0 top-6 bottom-6 w-1 bg-red-500 rounded-r-md";
+      activeBtn.appendChild(line);
+
+      // Spot details replacement
+      const tData = trainersData[key];
+      document.getElementById('trainer-spot-name').innerText = tData.name;
+      document.getElementById('trainer-spot-role').innerText = tData.role;
+      document.getElementById('trainer-spot-bio').innerText = tData.bio;
+      document.getElementById('trainer-spot-quote').innerText = `"${tData.quote}"`;
+      document.getElementById('trainer-spot-img').src = tData.img;
+      document.getElementById('trainer-spotlight-whatsapp').innerText = tData.ctaText;
+      document.getElementById('trainer-spotlight-whatsapp').href = tData.ctaUrl;
+
+      // specialties
+      const specsDiv = document.getElementById('trainer-spot-specialties');
+      specsDiv.innerHTML = '';
+      tData.specialties.forEach(spec => {
+        const span = document.createElement('span');
+        span.className = "bg-zinc-950 text-zinc-300 text-[11px] px-2.5 py-1 rounded-md border border-zinc-850";
+        span.innerText = spec;
+        specsDiv.appendChild(span);
+      });
+
+      // certs
+      const certsUl = document.getElementById('trainer-spot-certs');
+      certsUl.innerHTML = '';
+      tData.certs.forEach(cert => {
+        const li = document.createElement('li');
+        li.className = "flex items-center gap-2";
+        li.innerHTML = `<i data-lucide="award" class="w-3.5 h-3.5 text-red-500"></i> ${cert}`;
+        certsUl.appendChild(li);
+      });
+
+      lucide.createIcons();
+    }
+
+    // Interactive cheers counter
+    function cheerTrainer(key, event) {
+      event.stopPropagation();
+      const countEl = document.getElementById('cheer-' + key);
+      let count = parseInt(countEl.innerText);
+      countEl.innerText = count + 1;
+    }
+
+    // MEMBERSHIP CALCULATOR STATE & MATH ENGINE
+    let selectedPlanId = 'black-card';
+    let basePriceDraft = 3200;
+    let selectedCycle = 'quarter';
+
+    let addons = {
+      pt: false,
+      steam: true,
+      diet: false
+    };
+    let isStudentJoined = true;
+
+    const planTierLabels = {
+      'starter': 'Rookie Power Starter',
+      'black-card': 'Signature Black Card Combo',
+      'annual-alpha': 'Annual Alpha Shield Pass'
+    };
+
+    function selectPlan(id, baseValue, cycleDefault) {
+      selectedPlanId = id;
+      basePriceDraft = baseValue;
+      selectedCycle = cycleDefault;
+
+      // Update card checks visuals
+      const planCards = document.querySelectorAll('.plan-card');
+      planCards.forEach(c => {
+        c.classList.remove('border-red-600', 'ring-2', 'ring-red-600/30', 'shadow-[0_0_40px_rgba(220,38,38,0.15)]');
+        c.classList.add('border-zinc-850');
+      });
+
+      const checks = ['plan-starter-check', 'plan-black-check', 'plan-alpha-check'];
+      checks.forEach(chk => {
+        const checkEl = document.getElementById(chk);
+        checkEl.className = "w-5 h-5 rounded-full border border-zinc-800 text-transparent flex items-center justify-center";
+        checkEl.querySelector('i').className = "hidden";
+      });
+
+      let activeCheck, activeOutline;
+      if (id === 'starter') {
+        activeCheck = 'plan-starter-check';
+        activeOutline = 'plan-starter-card';
+      } else if (id === 'black-card') {
+        activeCheck = 'plan-black-check';
+        activeOutline = 'plan-black-card';
+      } else {
+        activeCheck = 'plan-alpha-check';
+        activeOutline = 'plan-alpha-card';
+      }
+
+      const activeOutlineEl = document.getElementById(activeOutline);
+      activeOutlineEl.classList.add('border-red-600', 'ring-2', 'ring-red-600/30', 'shadow-[0_0_40px_rgba(220,38,38,0.15)]');
+      
+      const activeCheckEl = document.getElementById(activeCheck);
+      activeCheckEl.className = "w-5 h-5 rounded-full border border-red-500 bg-red-600 text-white flex items-center justify-center";
+      activeCheckEl.querySelector('i').className = "lucide-icon";
+
+      // Sync cycle selection highlights
+      setCycle(cycleDefault);
+    }
+
+    function setCycle(cycle) {
+      selectedCycle = cycle;
+
+      // Toggle buttons
+      const btns = document.querySelectorAll('.cycle-btn');
+      btns.forEach(b => {
+        b.className = "cycle-btn py-2 text-zinc-400 hover:text-zinc-200 rounded-lg font-display text-xs font-bold uppercase transition";
+      });
+      document.getElementById('btn-cycle-' + cycle).className = "cycle-btn py-2 bg-red-600 text-white rounded-lg font-display text-xs font-bold uppercase transition";
+
+      recalculatePricing();
+    }
+
+    function toggleAddon(key) {
+      addons[key] = !addons[key];
+      const checkEl = document.getElementById('check-' + key);
+      const parentEl = checkEl.closest('div.flex');
+
+      if (addons[key]) {
+        checkEl.className = "w-5 h-5 rounded border border-red-500 bg-red-600 text-white flex items-center justify-center";
+        parentEl.parentElement.className = "flex items-center justify-between p-3.5 rounded-xl border border-red-500/50 bg-zinc-950 cursor-pointer transition select-none";
+      } else {
+        checkEl.className = "w-5 h-5 rounded border border-zinc-800 bg-zinc-900 text-transparent flex items-center justify-center";
+        parentEl.parentElement.className = "flex items-center justify-between p-3.5 rounded-xl border border-zinc-900 hover:border-zinc-800 bg-transparent cursor-pointer transition select-none";
+      }
+
+      recalculatePricing();
+    }
+
+    function toggleStudent() {
+      isStudentJoined = !isStudentJoined;
+      const checkEl = document.getElementById('check-student');
+      const parentEl = checkEl.parentElement.parentElement;
+
+      if (isStudentJoined) {
+        checkEl.className = "w-6 h-6 rounded-full border-2 border-red-500 bg-red-600 text-white flex items-center justify-center";
+        parentEl.className = "p-4 rounded-xl border-2 border-red-600 bg-red-950/40 cursor-pointer shadow-[0_0_20px_rgba(220,38,38,0.15)] flex justify-between items-center select-none";
+      } else {
+        checkEl.className = "w-6 h-6 rounded-full border-2 border-zinc-700 bg-zinc-900 text-zinc-650 flex items-center justify-center";
+        parentEl.className = "p-4 rounded-xl border bg-zinc-950 border-zinc-800 hover:border-zinc-700 cursor-pointer flex justify-between items-center select-none";
+      }
+
+      recalculatePricing();
+    }
+
+    function recalculatePricing() {
+      // 1. Base price calculation
+      let calculatedBase = basePriceDraft;
+
+      if (selectedPlanId === 'starter') {
+        if (selectedCycle === 'quarter') {
+          calculatedBase = basePriceDraft * 3 * 0.9; // 10% off
+        } else if (selectedCycle === 'year') {
+          calculatedBase = basePriceDraft * 12 * 0.75; // 25% off
+        }
+      } else if (selectedPlanId === 'black-card') {
+        if (selectedCycle === 'month') {
+          calculatedBase = Math.round((basePriceDraft / 3) * 1.15);
+        } else if (selectedCycle === 'year') {
+          calculatedBase = basePriceDraft * 4 * 0.75;
+        }
+      } else if (selectedPlanId === 'annual-alpha') {
+        if (selectedCycle === 'month') {
+          calculatedBase = Math.round((basePriceDraft / 12) * 1.4);
+        } else if (selectedCycle === 'quarter') {
+          calculatedBase = Math.round((basePriceDraft / 4) * 1.15);
+        }
+      }
+
+      calculatedBase = Math.round(calculatedBase);
+
+      // 2. Add-ons calculations relative to periods
+      let cycleMult = selectedCycle === 'month' ? 1 : selectedCycle === 'quarter' ? 3 : 12;
+      let ptUp = addons.pt ? 1500 * cycleMult : 0;
+      let steamUp = addons.steam ? 500 * cycleMult : 0;
+      let dietUp = addons.diet ? 300 * cycleMult : 0;
+      let addonsSum = ptUp + steamUp + dietUp;
+
+      // 3. Drafting
+      let subtotal = calculatedBase + addonsSum;
+      let studentDeduct = isStudentJoined ? Math.round(subtotal * 0.5) : 0;
+      let finalPrice = subtotal - studentDeduct;
+
+      // Write UI Outputs
+      document.getElementById('calc-display-tier').innerText = planTierLabels[selectedPlanId];
+      document.getElementById('calc-display-cycle').innerText = `Cycle: ${selectedCycle === 'month' ? 'Monthly Access Frame' : selectedCycle === 'quarter' ? 'Quarterly Combo Safe Block' : 'Annual Alpha Continuous Shield'}`;
+      
+      document.getElementById('invoice-base').innerText = `₹${calculatedBase}`;
+      document.getElementById('invoice-addons').innerText = `₹${addonsSum} (${cycleMult} months)`;
+      document.getElementById('invoice-draft-subtotal').innerText = `₹${subtotal}`;
+      
+      const studentRow = document.getElementById('invoice-student-row');
+      if (isStudentJoined) {
+        studentRow.classList.remove('hidden');
+        document.getElementById('invoice-student-discount').innerText = `-₹${studentDeduct}`;
+      } else {
+        studentRow.classList.add('hidden');
+      }
+
+      document.getElementById('invoice-total-money').innerText = `₹${finalPrice}`;
+      document.getElementById('invoice-total-frequency').innerText = `/${selectedCycle === 'month' ? 'month' : selectedCycle === 'quarter' ? 'quarter' : 'year'}`;
+
+      // WHATSAPP SEND RESTRUCTURE
+      let addonList = [];
+      if (addons.pt) addonList.push('1-on-1 PT');
+      if (addons.steam) addonList.push('Steam Chamber');
+      if (addons.diet) addonList.push('Macro Diet');
+      let addonsMsg = addonList.length > 0 ? ` + features [${addonList.join(', ')}]` : '';
+      let studentText = isStudentJoined ? ' applying 50% flat student code (SCSTU50OFF)' : '';
+
+      let bookingStr = `Hi Site Cart Gym, I want to book the ${planTierLabels[selectedPlanId]} on a ${selectedCycle} rate cycle${addonsMsg}${studentText}. Real Quote total calculated is ₹${finalPrice}/-. Please book my onboarding slot!`;
+      document.getElementById('invoice-whatsapp-link').href = `https://wa.me/918124254419?text=${encodeURIComponent(bookingStr)}`;
+    }
+
+    // Initial load math triggers
+    recalculatePricing();
+
+    // Feedback append drawer toggler
+    function toggleFeedbackForm() {
+      const form = document.getElementById('feedback-form-row');
+      form.classList.toggle('hidden');
+    }
+
+    // Star selection logic inside review forms
+    let formSelectedRating = 5;
+    function setFormStars(val) {
+      formSelectedRating = val;
+      const btns = document.querySelectorAll('#rating-star-selector button');
+      btns.forEach((b, idx) => {
+        const star = b.querySelector('i');
+        if (idx < val) {
+          star.classList.replace('text-zinc-800', 'text-amber-400');
+          star.setAttribute('fill', 'currentColor');
+        } else {
+          star.classList.replace('text-amber-400', 'text-zinc-855');
+          star.removeAttribute('fill');
+        }
+      });
+    }
+
+    // Submit user formulated reviews
+    function addNewReview(e) {
+      e.preventDefault();
+      const name = document.getElementById('fb-name').value.trim();
+      const plan = document.getElementById('fb-plan').value;
+      const comment = document.getElementById('fb-comment').value.trim();
+
+      if (!name || !comment) return;
+
+      // Construct a new visual card representing client logs
+      const card = document.createElement('div');
+      card.className = "bg-zinc-950 border border-zinc-900 p-5 rounded-2xl flex flex-col justify-between animate-pulse";
+      
+      let starsHtml = '';
+      for (let s = 1; s <= 5; s++) {
+        starsHtml += `<i data-lucide="star" class="w-3.5 h-3.5 ${s <= formSelectedRating ? 'fill-amber-400 text-amber-400' : 'text-zinc-800'}"></i>`;
+      }
+
+      card.innerHTML = `
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-white font-serif uppercase">${name[0]}</div>
+            <div>
+              <h4 class="font-display font-semibold text-sm text-white">${name}</h4>
+              <span class="text-[9px] text-zinc-500 font-mono block">Joined: ${plan}</span>
+            </div>
+          </div>
+          <div class="flex text-amber-400 mb-3">${starsHtml}</div>
+          <p class="text-zinc-300 text-xs italic leading-relaxed">"${comment}"</p>
+        </div>
+        <div class="mt-4 pt-4 border-t border-zinc-900 flex justify-between text-[8px] font-mono text-zinc-500 uppercase">
+          <span class="text-red-500/80 font-bold">✓ Live testimonial</span>
+          <span>Just now</span>
+        </div>
+      `;
+
+      // Prepend inside the grid
+      const grid = document.getElementById('reviews-list-grid');
+      grid.insertBefore(card, grid.firstChild);
+
+      // Recreate Icons to style elements instantly
+      lucide.createIcons();
+
+      // Clear fields and toggle
+      document.getElementById('fb-name').value = '';
+      document.getElementById('fb-comment').value = '';
+      setFormStars(5);
+      toggleFeedbackForm();
+
+      alert("✓ Thank you! Your testimonial has been appended locally and recalculated live on-the-fly!");
+    }
+
+    // Copy student promotional code
+    function copyCouponCode() {
+      const codeField = document.getElementById('promo-code');
+      codeField.select();
+      codeField.setSelectionRange(0, 99999); // Mobile compatibility
+      
+      navigator.clipboard.writeText(codeField.value);
+
+      const msg = document.getElementById('copy-message');
+      msg.classList.remove('hidden');
+      setTimeout(() => msg.classList.add('hidden'), 3500);
+    }
+
+    // FAQ Accordion
+    function toggleFaq(num) {
+      const ans = document.getElementById('faq-answer-' + num);
+      const chev = document.getElementById('faq-chevron-' + num);
+      
+      if (ans.classList.contains('hidden')) {
+        ans.classList.remove('hidden');
+        chev.style.transform = "rotate(180deg)";
+      } else {
+        ans.classList.add('hidden');
+        chev.style.transform = "rotate(0deg)";
+      }
+    }
+  </script>
+</body>
+</html>

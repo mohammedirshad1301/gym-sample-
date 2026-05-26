@@ -1,0 +1,48 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import React from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Services from './components/Services';
+import Trainers from './components/Trainers';
+import MembershipPlans from './components/MembershipPlans';
+import ReviewsSection from './components/ReviewsSection';
+import ContactAndFooter from './components/ContactAndFooter';
+
+export default function App() {
+  return (
+    <div className="bg-[#09090b] text-white min-h-screen font-sans selection:bg-red-650 selection:text-white" id="site-cart-root">
+      
+      {/* Sticky Premium Navigation bar */}
+      <Navbar />
+
+      {/* Main Page Scroll Area */}
+      <main className="relative" id="main-content">
+        
+        {/* Dynamic Hero Section featuring cinematic backgrounds, 50% discount and direct CTAs */}
+        <Hero />
+
+        {/* Services Zone containing interactive expansions */}
+        <Services />
+
+        {/* Trainer Spotlight highlighting Coach Rocky with custom certifications & quotes */}
+        <Trainers />
+
+        {/* Plans tier selector with built-in Interactive Price Calculator and checkout */}
+        <MembershipPlans />
+
+        {/* Community feedback showing 4.9 average stars with reactive submissions form */}
+        <ReviewsSection />
+
+        {/* Dynamic Map Mock, travel schedule, FAQ Accordion and local directions for Pattabiram */}
+        <ContactAndFooter />
+
+      </main>
+
+    </div>
+  );
+}
+

@@ -1,0 +1,6 @@
+{
+  "name": "Site Cart Gym",
+  "description": "A premium red and black themed fitness website for Site Cart Gym, located in Pattabiram, featuring cinematic training plans, exclusive trainer showcases, review ratings, and WhatsApp enquiry integration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
